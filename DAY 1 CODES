@@ -1,0 +1,83 @@
+4. Write a program to get the largest element of an array.
+
+def find_largest_element(arr):
+    return max(arr)
+array = [10, 5, 20, 8, 15]
+largest_element = find_largest_element(array)
+print(f'The largest element in the array is: {largest_element}')
+
+5. Write a program to find the Factorial of a number using recursion.6. Write a program for to copy one string to another  using recursion
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+number = 5
+result = factorial(number)
+print(f'The factorial of {number} is: {result}')
+
+6. Write a program   to print the reverse of a string using recursion
+
+def reverse_string(s):
+    if len(s) == 0:
+        return s
+    else:
+        return reverse_string(s[1:]) + s[0]
+
+input_string = "Hello, World!"
+reversed_string = reverse_string(input_string)
+print("Original String:", input_string)
+print("Reversed String:", reversed_string)
+
+7. Write a program   to generate all the prime numbers using recursion
+
+def is_prime(n, i=2):
+    if n <= 2:
+        return True if n == 2 else False
+    if n % i == 0:
+        return False
+    if i * i > n:
+        return True
+    return is_prime(n, i + 1)
+
+def generate_primes(n):
+    if n > 1:
+        generate_primes(n - 1)
+        if is_prime(n):
+            print(n)
+8.Write a program to check a number is a prime number or not using recursion.
+def is_prime(num, i=2):
+    if num <= 2:
+        return num == 2
+    if num % i == 0:
+        return False
+    if i * i > num:
+        return True
+    return is_prime(num, i + 1)
+
+num = int(input("Enter a number: "))
+if is_prime(num):
+    print(num, "is a prime number")
+else:
+    print(num, "is not a prime number")
+9.Write a program for to check whether a given String is Palindrome or  not using recursion
+
+def is_palindrome(s):
+    s = s.lower()
+    s = ''.join(e for e in s if e.isalnum())
+    
+    if len(s) < 2:
+        return True
+    if s[0] != s[-1]:
+        return False
+    return is_palindrome(s[1:-1])
+
+# Test the function
+input_string = "A man, a plan, a canal, Panama"
+if is_palindrome(input_string):
+    print(f"{input_string} is a palindrome.")
+else:
+    print(f"{input_string} is not a palindrome.")
+
