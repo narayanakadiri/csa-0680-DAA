@@ -1,0 +1,54 @@
+1.Write a program to find the reverse of a given number using recursive.
+
+def reverse_number(n, rev=0):
+    if n == 0:
+        return rev
+    else:
+        return reverse_number(n // 10, rev * 10 + n % 10)
+
+number = 12345
+reversed_number = reverse_number(number)
+print(f"The reverse of {number} is: {reversed_number}")
+
+
+2.Write a program to find the perfect number. 
+
+def is_perfect_number(num):
+    sum_divisors = 0
+    for i in range(1, num):
+        if num % i == 0:
+            sum_divisors += i
+    return sum_divisors == num
+
+def find_perfect_numbers(limit):
+    perfect_numbers = []
+    for i in range(1, limit + 1):
+        if is_perfect_number(i):
+            perfect_numbers.append(i)
+    return perfect_numbers
+
+limit = 10000
+perfect_numbers = find_perfect_numbers(limit)
+print("Perfect numbers up to", limit, "are:", perfect_numbers)
+
+3.Write C program that demonstrates the usage of these notations by analyzing the time complexity of some example algorithms.
+
+def analyze_time_complexity():
+    # Write your code here to analyze time complexity
+    pass
+
+def example_algorithm_1(n):
+    for i in range(n):
+        print(i)
+
+def example_algorithm_2(n):
+    for i in range(n):
+        for j in range(n):
+            print(i, j)
+
+analyze_time_complexity()
+example_algorithm_1(5)
+example_algorithm_2(3)
+
+
+
