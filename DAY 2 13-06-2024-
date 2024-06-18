@@ -50,5 +50,213 @@ analyze_time_complexity()
 example_algorithm_1(5)
 example_algorithm_2(3)
 
+4. Write a program to get the largest element of an array.
+
+def find_largest_element(arr):
+    return max(arr)
+array = [10, 5, 20, 8, 15]
+largest_element = find_largest_element(array)
+print(f'The largest element in the array is: {largest_element}')
+
+5. Write a program to find the Factorial of a number using recursion.6. Write a program for to copy one string to another  using recursion
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+number = 5
+result = factorial(number)
+print(f'The factorial of {number} is: {result}')
+
+6. Write a program   to print the reverse of a string using recursion
+
+def reverse_string(s):
+    if len(s) == 0:
+        return s
+    else:
+        return reverse_string(s[1:]) + s[0]
+
+input_string = "Hello, World!"
+reversed_string = reverse_string(input_string)
+print("Original String:", input_string)
+print("Reversed String:", reversed_string)
+
+7. Write a program   to generate all the prime numbers using recursion
+
+def is_prime(n, i=2):
+    if n <= 2:
+        return True if n == 2 else False
+    if n % i == 0:
+        return False
+    if i * i > n:
+        return True
+    return is_prime(n, i + 1)
+
+def generate_primes(n):
+    if n > 1:
+        generate_primes(n - 1)
+        if is_prime(n):
+            print(n)
+
+8. Write a program to check a number is a prime number or not using recursion.
+
+def is_prime(num, i=2):
+    if num <= 2:
+        return num == 2
+    if num % i == 0:
+        return False
+    if i * i > num:
+        return True
+    return is_prime(num, i + 1)
+num = int(input("Enter a number: "))
+if is_prime(num):
+    print(num, "is a prime number")
+else:
+    print(num, "is not a prime number")
+
+
+9.Write a program for to check whether a given String is Palindrome or  not using recursion
+
+def is_palindrome(s):
+    s = s.lower()
+    s = ''.join(e for e in s if e.isalnum())
+    if len(s) < 2:
+        return True
+    if s[0] != s[-1]:
+        return False
+    return is_palindrome(s[1:-1])
+string = "A man, a plan, a canal, Panama"
+if is_palindrome(string):
+    print(f"{string} is a palindrome.")
+else:
+    print(f"{string} is not a palindrome.")
+
+DAY 2 13-06-2024
+
+1. Write a program to find the reverse of a given number using recursive.
+
+def reverse_number(n, rev=0):
+    if n == 0:
+        return rev
+    else:
+        return reverse_number(n // 10, rev * 10 + n % 10)
+number = 12345
+reverse = reverse_number(number)
+print(f"The reverse of {number} is: {reverse}")
+
+
+2. Write a program to find the perfect number. 
+
+def is_perfect_number(num):
+    sum_divisors = 0
+    for i in range(1, num):
+        if num % i == 0:
+            sum_divisors += i
+    return sum_divisors == num
+def find_perfect_numbers(limit):
+    perfect_numbers = []
+    for i in range(1, limit + 1):
+        if is_perfect_number(i):
+            perfect_numbers.append(i)
+    return perfect_numbers
+limit = 10000
+perfect_numbers = find_perfect_numbers(limit)
+print("Perfect numbers up to", limit, "are:", perfect_numbers)
+
+3.Write C program that demonstrates the usage of these notations by analyzing the time complexity of some example algorithms.
+
+def example_algorithm(n):
+    print("This is a constant time complexity algorithm")
+    for i in range(n):
+        print("This is a linear time complexity algorithm")
+    for i in range(n):
+        for j in range(n):
+            print("This is a quadratic time complexity algorithm")
+
+
+4.Write C programs that demonstrate the mathematical analysis of non-recursive and recursive algorithms.
+
+def non_recursive_factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+def recursive_factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * recursive_factorial(n - 1)
+
+5. Write C programs for solving recurrence relations using the Master Theorem, Substitution Method,
+ and Iteration Method will demonstrate how to calculate the time complexity of an example recurrence relation using the specified technique.
+
+def master_theorem(a, b, k):
+    return f"T(n) = O(n^{k})"\
+def substitution_method():
+    return f"T(n) = O(log(n))"
+def iteration_method():
+    return f"T(n) = O(n)"
+
+6. Given two integer arrays nums1 and nums2, return an array of their Intersection. Each element in the result must be unique and you may return the result in any order.
+
+def intersection(nums1, nums2):
+    set1 = set(nums1)
+    set2 = set(nums2)
+    return list(set1.intersection(set2))
+
+7. Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+def intersect(nums1, nums2):
+    count1, count2 = Counter(nums1), Counter(nums2)
+    return list((count1 & count2).elements())
+
+8. iven an array of integers nums, sort the array in ascending order and return it.You must solve the problem without using any built-in functions in O(nlog(n)) time complexity and with the smallest space complexity possible.
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+nums = [12, 11, 13, 5, 6, 7]
+sorted_nums = merge_sort(nums)
+print(sorted_nums)
+
+
+9. Given an array of integers nums, half of the integers in nums are odd, and the other half are even.
+
+def half_odd_even(nums):
+    odd_nums = [num for num in nums if num % 2 != 0]
+    even_nums = [num for num in nums if num % 2 == 0]
+    result = odd_nums[:len(odd_nums)//2] + even_nums[:len(even_nums)//2]
+    return result
+nums = [1, 2, 3, 4, 5, 6]
+result = half_odd_even(nums)
+print(result)
+
+10. Sort the array so that whenever nums[i] is odd, i is odd, and whenever nums[i] is even, i is even. Return any answer array that satisfies this condition.
+
+def sort_array_by_parity(nums):
+    nums.sort(key=lambda x: (x % 2, x % 2 == 0))
+    return nums
+
 
 
